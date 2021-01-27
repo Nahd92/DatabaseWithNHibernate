@@ -12,7 +12,7 @@ namespace SchoolTest
     {
         static void Main(string[] args)
         {
-            Helper.WelcomeScreen();
+            ProgramHelper.WelcomeScreen();
         }
     }
 }

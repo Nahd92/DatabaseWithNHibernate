@@ -7,7 +7,7 @@ using System.Reflection;
 
 namespace SchoolTest
 {
-    public static class Helper
+    public static class ProgramHelper
     {
 
         public static void WelcomeScreen()

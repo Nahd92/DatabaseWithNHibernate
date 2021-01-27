@@ -76,10 +76,6 @@ namespace SchoolTest
                     {
                         DisplayAllStudents();
                     }
-                    else
-                    {
-                        Console.WriteLine("Hej då");
-                    }
                     return true;
                 }
             }

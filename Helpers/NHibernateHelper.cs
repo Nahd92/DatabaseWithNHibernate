@@ -9,7 +9,7 @@ using FluentNHibernate.Cfg.Db;
 
 namespace SchoolTest
 {
-   public class NHibernateHelper
+    public class NHibernateHelper
     {
         private static readonly ISessionFactory _sessionFactory;
 
@@ -47,7 +47,6 @@ namespace SchoolTest
 
 
 
-        
 
     }
 
