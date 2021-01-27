@@ -107,11 +107,28 @@ namespace SchoolTest
                     Console.WriteLine("Retrieved by ID");
                     Console.WriteLine("{0} \t{1},\t{2}", stdnt.ID, stdnt.FirstName,
                             stdnt.LastName);
-
+                    System.Console.WriteLine();
                     Console.WriteLine("Update the last name of Id = {0}", stdnt.ID);
-                    Console.WriteLine("Vad ska hen heta? ");
-                    string updateName = Console.ReadLine();
-                    stdnt.LastName = updateName;
+                    System.Console.WriteLine();
+                    Console.WriteLine("Update firstname:  ");
+                    string firstName = Console.ReadLine();
+                    System.Console.WriteLine("Update LastName: ");
+                    string lastName = Console.ReadLine();
+
+                    if (!string.IsNullOrWhiteSpace(firstName) && !string.IsNullOrWhiteSpace(lastName))
+                    {
+                        stdnt.FirstName = firstName;
+                        stdnt.LastName = lastName;
+                    }
+                    else if (!string.IsNullOrWhiteSpace(firstName) && string.IsNullOrWhiteSpace(lastName))
+                    {
+                        stdnt.FirstName = firstName;
+                    }
+                    else if (string.IsNullOrWhiteSpace(firstName) && !string.IsNullOrWhiteSpace(lastName))
+                    {
+                        stdnt.LastName = lastName;
+                    }
+
                     session.Update(stdnt);
 
                     Console.WriteLine("\nFetch the complete list of again? Y/N");
@@ -121,10 +138,6 @@ namespace SchoolTest
                     if (entireList == "Y".ToLower())
                     {
                         DisplayAllStudents();
-                    }
-                    else
-                    {
-                        Console.WriteLine("Hej då");
                     }
                     return true;
                 }
@@ -137,9 +150,9 @@ namespace SchoolTest
 
         public static void CreateStudent()
         {
-            Console.WriteLine("Skriv in ditt namn: ");
+            Console.WriteLine("Enter your name: ");
             string name = Console.ReadLine();
-            Console.WriteLine("Skriv in ditt efternamn: ");
+            Console.WriteLine("Enter your lastname: ");
             string lastName = Console.ReadLine();
 
             var student = new Student()
