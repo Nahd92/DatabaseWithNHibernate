@@ -13,10 +13,7 @@ namespace SchoolTest
     {
         private static readonly ISessionFactory _sessionFactory;
 
-        static NHibernateHelper()
-        {
-            _sessionFactory = FluentConfigure();
-        }
+        static NHibernateHelper() => _sessionFactory = FluentConfigure();
 
         public static ISessionFactory FluentConfigure()
         {
@@ -33,20 +30,9 @@ namespace SchoolTest
                 .BuildSessionFactory();
         }
 
+        public static ISession GetCurrentSession() => _sessionFactory.OpenSession();
 
-
-        public static ISession GetCurrentSession()
-        {
-            return _sessionFactory.OpenSession();
-        }
-
-        public static void CloseCurrentSession()
-        {
-            _sessionFactory.Close();
-        }
-
-
-
+        public static void CloseCurrentSession() => _sessionFactory.Close();
 
     }
 

@@ -20,6 +20,11 @@ namespace SchoolTest
                 Console.WriteLine("2. Get one student?");
                 Console.WriteLine("3. Delete one student?");
                 Console.WriteLine("4. Update one student?");
+                Console.WriteLine("5. Create one student?");
+                Console.WriteLine("------------------------");
+                Console.WriteLine("Teachers options!");
+                Console.WriteLine("6. See list of all students?");
+                Console.WriteLine("7. Create one Teacher?");
                 int input = int.Parse(Console.ReadLine());
 
                 string checkIfContinue = "";
@@ -56,9 +61,34 @@ namespace SchoolTest
                         }
                         continue;
                     case 4:
-                        Console.WriteLine("Vilken ID vill du updatera i databasen");
+                        Console.WriteLine("What student do you want update? Type ID!");
                         int position = int.Parse(Console.ReadLine());
                         CRUDHelpers.UpdateStudent(position);
+                        checkIfContinue = Console.ReadLine();
+                        if (checkIfContinue == "N".ToLower())
+                        {
+                            System.Environment.Exit(1);
+                        }
+                        continue;
+                    case 5:
+                        CRUDHelpers.CreateStudent();
+                        if (checkIfContinue == "N".ToLower())
+                        {
+                            System.Environment.Exit(1);
+                        }
+                        continue;
+                    case 6:
+                        CRUDHelpers.DisplayAllTeachers();
+                        Console.WriteLine("Continue? Y/N");
+                        checkIfContinue = Console.ReadLine();
+                        if (checkIfContinue == "N".ToLower())
+                        {
+                            System.Environment.Exit(1);
+                        }
+                        continue;
+                    case 7:
+                        CRUDHelpers.CreateTeacher();
+                        Console.WriteLine("Continue? Y/N");
                         checkIfContinue = Console.ReadLine();
                         if (checkIfContinue == "N".ToLower())
                         {

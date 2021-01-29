@@ -6,6 +6,61 @@ namespace SchoolTest
 {
     public class CRUDHelpers
     {
+
+        public static void CreateTeacher()
+        {
+            Console.WriteLine("Enter teachers name: ");
+            string name = Console.ReadLine();
+            Console.WriteLine("Enter teachers lastname: ");
+            string lastName = Console.ReadLine();
+
+            var teacher = new Teacher()
+            {
+                FirstName = name,
+                LastName = lastName
+            };
+
+            ISession session = NHibernateHelper.GetCurrentSession();
+
+            try
+            {
+                using (var tx = session.BeginTransaction())
+                {
+                    session.Save(teacher);
+                    tx.Commit();
+                }
+            }
+            finally
+            {
+                NHibernateHelper.CloseCurrentSession();
+            }
+        }
+
+
+        public static void DisplayAllTeachers()
+        {
+            ISession session = NHibernateHelper.GetCurrentSession();
+
+            try
+            {
+                using (var tx = session.BeginTransaction())
+                {
+                    var teachers = session.CreateCriteria<Teacher>().List<Teacher>();
+
+                    foreach (var teacher in teachers)
+                    {
+                        Console.WriteLine("{0} \t{1}, \t{2}", teacher.ID, teacher.FirstName, teacher.LastName);
+                    }
+                    tx.Commit();
+                }
+                Console.ReadLine();
+            }
+            finally
+            {
+                NHibernateHelper.CloseCurrentSession();
+            }
+        }
+
         public static bool GetOneUserById(int studentId)
         {
             ISession session = NHibernateHelper.GetCurrentSession();

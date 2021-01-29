@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SchoolTest.Mapper
 {
-   public class StudentMapper : ClassMap<Student>
+    public class StudentMapper : ClassMap<Student>
     {
         public StudentMapper()
         {
