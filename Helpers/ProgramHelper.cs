@@ -23,7 +23,7 @@ namespace SchoolTest
                 Console.WriteLine("5. Create one student?");
                 Console.WriteLine("------------------------");
                 Console.WriteLine("Teachers options!");
-                Console.WriteLine("6. See list of all students?");
+                Console.WriteLine("6. See list of all Teachers?");
                 Console.WriteLine("7. Create one Teacher?");
                 int input = int.Parse(Console.ReadLine());
 
@@ -72,6 +72,8 @@ namespace SchoolTest
                         continue;
                     case 5:
                         CRUDHelpers.CreateStudent();
+                        Console.WriteLine("Continue? Y/N");
+                        checkIfContinue = Console.ReadLine();
                         if (checkIfContinue == "N".ToLower())
                         {
                             System.Environment.Exit(1);
